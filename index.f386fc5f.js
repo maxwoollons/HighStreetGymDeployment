@@ -35704,8 +35704,8 @@ exports.pipeline = require("./lib/internal/streams/pipeline.js");
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 "use strict";
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 module.exports = Readable;
 /*<replacement>*/ var Duplex;
 /*</replacement>*/ Readable.ReadableState = ReadableState;
@@ -37459,8 +37459,8 @@ Object.defineProperty(Duplex.prototype, "destroyed", {
 // Implement an async ._write(chunk, encoding, cb), and it'll handle all
 // the drain event emission and buffering.
 "use strict";
-var global = arguments[3];
 var process = require("process");
+var global = arguments[3];
 module.exports = Writable;
 /* <replacement> */ function WriteReq(chunk, encoding, cb) {
     this.chunk = chunk;
@@ -69685,6 +69685,8 @@ const Login = ()=>{
         (0, _axiosDefault.default).post("https://api.highstreetgym.xyz/users/login", {
             email: email,
             password: password
+        }, {
+            withCredentials: true
         }).then((res)=>{
             console.log(res);
             if (res.data.message === "logged in") {
@@ -69717,7 +69719,7 @@ const Login = ()=>{
                             onChange: handleEmailChange
                         }, void 0, false, {
                             fileName: "src/frontend/components/Login.jsx",
-                            lineNumber: 49,
+                            lineNumber: 54,
                             columnNumber: 17
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -69728,7 +69730,7 @@ const Login = ()=>{
                             onChange: handlePasswordChange
                         }, void 0, false, {
                             fileName: "src/frontend/components/Login.jsx",
-                            lineNumber: 50,
+                            lineNumber: 55,
                             columnNumber: 17
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -69737,28 +69739,28 @@ const Login = ()=>{
                             children: "Login"
                         }, void 0, false, {
                             fileName: "src/frontend/components/Login.jsx",
-                            lineNumber: 51,
+                            lineNumber: 56,
                             columnNumber: 17
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/frontend/components/Login.jsx",
-                    lineNumber: 48,
+                    lineNumber: 53,
                     columnNumber: 13
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/frontend/components/Login.jsx",
-                lineNumber: 47,
+                lineNumber: 52,
                 columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "src/frontend/components/Login.jsx",
-            lineNumber: 46,
+            lineNumber: 51,
             columnNumber: 5
         }, undefined)
     }, void 0, false, {
         fileName: "src/frontend/components/Login.jsx",
-        lineNumber: 45,
+        lineNumber: 50,
         columnNumber: 5
     }, undefined);
 };
