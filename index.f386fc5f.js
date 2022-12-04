@@ -27082,7 +27082,7 @@ const App = ()=>{
     _s();
     const [user, setUser] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
-        (0, _axiosDefault.default).get("/api/users/loginstatus").then((res)=>{
+        (0, _axiosDefault.default).get("https://api.highstreetgym.xyz/users/loginstatus").then((res)=>{
             if (res.data) {
                 setUser(res.data);
                 console.log(res.data);
@@ -27255,13 +27255,13 @@ const Navbar = ()=>{
         status();
     }, []);
     const status = async ()=>{
-        const res = await (0, _axiosDefault.default).get("/api/users/loginstatus");
+        const res = await (0, _axiosDefault.default).get("https://api.highstreetgym.xyz/users/loginstatus");
         if (res.data) setUser(res.data);
         else setUser(null);
     };
     const logout = async ()=>{
         try {
-            await (0, _axiosDefault.default).get("/api/users/logout");
+            await (0, _axiosDefault.default).get("https://api.highstreetgym.xyz/users/logout");
             setUser(null);
             location.href = "/";
         } catch (err) {
@@ -69281,7 +69281,7 @@ const Home = ()=>{
         }
     ]);
     (0, _react.useEffect)(()=>{
-        (0, _axiosDefault.default).get("/api/posts/few").then((res)=>{
+        (0, _axiosDefault.default).get("https://api.highstreetgym.xyz/posts/few").then((res)=>{
             setPosts(res.data);
         }).catch((err)=>{
             console.log(err);
@@ -69682,7 +69682,7 @@ const Login = ()=>{
     const [password, setPassword] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
     const handleSubmit = (e)=>{
-        (0, _axiosDefault.default).post("/api/users/login", {
+        (0, _axiosDefault.default).post("https://api.highstreetgym.xyz/users/login", {
             email: email,
             password: password
         }).then((res)=>{
@@ -69794,7 +69794,7 @@ const Register = ()=>{
     const [email, setEmail] = (0, _react.useState)("");
     const [name, setName] = (0, _react.useState)("");
     const handleSubmit = (e)=>{
-        (0, _axiosDefault.default).post("/api/users/register", {
+        (0, _axiosDefault.default).post("https://api.highstreetgym.xyz/users/register", {
             name: name,
             email: email,
             password: password
@@ -69923,7 +69923,7 @@ const Blog = ()=>{
     ]);
     const { user , setUser  } = (0, _react.useContext)((0, _appContext.AppContext));
     (0, _react.useEffect)(()=>{
-        (0, _axiosDefault.default).get("/api/posts/all").then((res)=>{
+        (0, _axiosDefault.default).get("https://api.highstreetgym.xyz/posts/all").then((res)=>{
             setPosts(res.data);
         }).catch((err)=>{
             console.log(err);
@@ -69937,7 +69937,7 @@ const Blog = ()=>{
             return post;
         });
         setPosts(newPosts);
-        (0, _axiosDefault.default).post("/api/posts/like", {
+        (0, _axiosDefault.default).post("https://api.highstreetgym.xyz/posts/like", {
             post_id
         }).then((res)=>{
             console.log(res);
@@ -71998,14 +71998,14 @@ const Sessions = ()=>{
         }
     ]);
     (0, _react.useEffect)(()=>{
-        (0, _axiosDefault.default).get("/api/sessions/").then((res)=>{
+        (0, _axiosDefault.default).get("https://api.highstreetgym.xyz/sessions/").then((res)=>{
             setSessions(res.data);
         }).catch((err)=>{
             console.log(err);
         });
     }, []);
     (0, _react.useEffect)(()=>{
-        (0, _axiosDefault.default).get("/api/users/loginstatus").then((res)=>{
+        (0, _axiosDefault.default).get("https://api.highstreetgym.xyz/users/loginstatus").then((res)=>{
             if (res.data) {
                 setUser(res.data);
                 console.log(res.data);
@@ -72017,7 +72017,7 @@ const Sessions = ()=>{
     function bookUser(e) {
         let id = e.target.value;
         console.log(id);
-        (0, _axiosDefault.default).post("/api/bookings/book", {
+        (0, _axiosDefault.default).post("https://api.highstreetgym.xyz/bookings/book", {
             memberid: user.id,
             sessionid: id
         }).then((res)=>{
@@ -72175,7 +72175,7 @@ const TrainerHub = ()=>{
     function openModal(e) {
         let id = e.target.value;
         setSessionID(id);
-        (0, _axiosDefault.default).post("/api/sessions/session", {
+        (0, _axiosDefault.default).post("https://api.highstreetgym.xyz/sessions/session", {
             id
         }).then((res)=>{
             setEditData(res.data);
@@ -72189,7 +72189,7 @@ const TrainerHub = ()=>{
     }
     //download history
     function downloadHistory(e) {
-        (0, _axiosDefault.default).get("/api/data/history", {
+        (0, _axiosDefault.default).get("https://api.highstreetgym.xyz/data/history", {
             responseType: "blob"
         }).then((res)=>{
             console.log(res.data);
@@ -72199,7 +72199,7 @@ const TrainerHub = ()=>{
         });
     }
     function downloadToday(e) {
-        (0, _axiosDefault.default).get("/api/data/today", {
+        (0, _axiosDefault.default).get("https://api.highstreetgym.xyz/data/today", {
             responseType: "blob"
         }).then((res)=>{
             console.log(res.data);
@@ -72213,7 +72213,7 @@ const TrainerHub = ()=>{
     }
     function delSession(e) {
         const sessionID = e.target.value;
-        if (window.confirm("Are you sure you want to delete this session? \n(This cannot be undone!)")) (0, _axiosDefault.default).post("/api/sessions/delete", {
+        if (window.confirm("Are you sure you want to delete this session? \n(This cannot be undone!)")) (0, _axiosDefault.default).post("https://api.highstreetgym.xyz/sessions/delete", {
             id: sessionID
         }).then((res)=>{
             console.log(res);
@@ -72226,14 +72226,14 @@ const TrainerHub = ()=>{
         status();
     }, []);
     (0, _react.useEffect)(()=>{
-        (0, _axiosDefault.default).get("/api/stats/usernum").then((res)=>{
+        (0, _axiosDefault.default).get("https://api.highstreetgym.xyz/stats/usernum").then((res)=>{
             setTotalUsers(res.data);
         }).catch((err)=>{
             console.log(err);
         });
     }, []);
     (0, _react.useEffect)(()=>{
-        if (user) (0, _axiosDefault.default).post("/api/sessions/mysessions", {
+        if (user) (0, _axiosDefault.default).post("https://api.highstreetgym.xyz/sessions/mysessions", {
             id: user.id
         }).then((res)=>{
             setSessions(res.data);
@@ -72245,7 +72245,7 @@ const TrainerHub = ()=>{
         rerender
     ]);
     const status = async ()=>{
-        const res = await (0, _axiosDefault.default).get("/api/users/loginstatus");
+        const res = await (0, _axiosDefault.default).get("https://api.highstreetgym.xyz/users/loginstatus");
         if (res.data) setUser(res.data);
         else setUser(null);
     };
@@ -72468,7 +72468,7 @@ const CreateSession = ()=>{
             let capacity = parseInt(maxSpace);
             let user_id = user.id;
             console.log(user_id);
-            const res = await (0, _axiosDefault.default).post("/api/sessions/create", {
+            const res = await (0, _axiosDefault.default).post("https://api.highstreetgym.xyz/sessions/create", {
                 user_id,
                 date,
                 time,
@@ -72481,7 +72481,7 @@ const CreateSession = ()=>{
         }
     };
     (0, _react.useEffect)(()=>{
-        (0, _axiosDefault.default).get("/api/users/loginstatus").then((res)=>{
+        (0, _axiosDefault.default).get("https://api.highstreetgym.xyz/users/loginstatus").then((res)=>{
             if (res.data) {
                 setUser(res.data);
                 console.log("data: " + res.data.resonse);
@@ -72682,7 +72682,7 @@ const EditModal = (props)=>{
         let capacity = parseInt(maxSpace);
         let user_id = props.user.id;
         let session_id = props.sessionID;
-        (0, _axiosDefault.default).post("/api/sessions/update", {
+        (0, _axiosDefault.default).post("https://api.highstreetgym.xyz/sessions/update", {
             session_id,
             user_id,
             date,
@@ -72934,7 +72934,7 @@ const BlogCreate = (props)=>{
         if (title === "" || content === "") {
             alert("Please fill in all fields");
             return;
-        } else (0, _axiosDefault.default).post("/api/posts/create", {
+        } else (0, _axiosDefault.default).post("https://api.highstreetgym.xyz/posts/create", {
             user_id,
             title,
             content
@@ -73128,7 +73128,7 @@ const Stats = (props)=>{
         }
     ]);
     (0, _react.useEffect)(()=>{
-        (0, _axiosDefault.default).get("/api/stats/accage").then((res)=>{
+        (0, _axiosDefault.default).get("https://api.highstreetgym.xyz/stats/accage").then((res)=>{
             setAccAge(res.data);
         }).catch((err)=>{
             console.log(err);
@@ -73388,7 +73388,7 @@ const Booked = ()=>{
     const [render, setRender] = (0, _react.useState)(false);
     function deleteBooking(e) {
         let booking_id = e.target.value;
-        (0, _axiosDefault.default).delete("http://localhost:1234/api/bookings/book", {
+        (0, _axiosDefault.default).delete("https://api.highstreetgym.xyz/bookings/book", {
             data: {
                 booking_id
             }
@@ -73411,9 +73411,9 @@ const Booked = ()=>{
     // }
     (0, _react.useEffect)(()=>{
         // get the users id
-        (0, _axiosDefault.default).get("/api/users/loginstatus").then((res1)=>{
+        (0, _axiosDefault.default).get("https://api.highstreetgym.xyz/users/loginstatus").then((res1)=>{
             console;
-            (0, _axiosDefault.default).post("/api/sessions/booked", {
+            (0, _axiosDefault.default).post("https://api.highstreetgym.xyz/sessions/booked", {
                 id: res1.data.id
             }).then((res)=>{
                 setBooked(res.data);
@@ -73563,7 +73563,7 @@ const EditBlog = ()=>{
     const [showModal, setShowModal] = (0, _react.useState)(false);
     let id1 = user.id;
     (0, _react.useEffect)(()=>{
-        (0, _axiosDefault.default).post("/api/posts/myposts", {
+        (0, _axiosDefault.default).post("https://api.highstreetgym.xyz/posts/myposts", {
             id: id1
         }).then((res)=>{
             setPosts(res.data);
@@ -73576,7 +73576,7 @@ const EditBlog = ()=>{
     ]);
     function editPost(e) {
         let id = e.target.value;
-        (0, _axiosDefault.default).post("/api/posts/post", {
+        (0, _axiosDefault.default).post("https://api.highstreetgym.xyz/posts/post", {
             "post_id": id
         }).then((res)=>{
             console.log(res.data);
@@ -73593,7 +73593,7 @@ const EditBlog = ()=>{
     }
     function delPost(e) {
         let post_id = e.target.value;
-        if (window.confirm("Are you sure you want to delete this post?")) (0, _axiosDefault.default).delete("/api/posts/delete", {
+        if (window.confirm("Are you sure you want to delete this post?")) (0, _axiosDefault.default).delete("https://api.highstreetgym.xyz/posts/delete", {
             data: {
                 post_id
             }
@@ -73688,7 +73688,7 @@ function Modal(props) {
         setBody(e.target.value);
     }
     function updatePost() {
-        (0, _axiosDefault.default).put("/api/posts/update", {
+        (0, _axiosDefault.default).put("https://api.highstreetgym.xyz/posts/update", {
             title,
             "content": body,
             postId
